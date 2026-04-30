@@ -6,13 +6,13 @@
     <title>Clinica Sonrisa Norte | Dentista en Alcobendas</title>
     <meta
       name="description"
-      content="Clinica dental de confianza en Alcobendas. Revision, limpieza, ortodoncia e implantes. Reserva por WhatsApp en menos de 1 minuto."
+      content="Clinica dental de confianza en Alcobendas. Revision, limpieza, ortodoncia e implantes. Reserva cita online en menos de 1 minuto con Google Calendar."
     />
     <meta name="theme-color" content="#eef5f4" />
     <meta property="og:title" content="Clinica Sonrisa Norte | Dentista en Alcobendas" />
     <meta
       property="og:description"
-      content="Tratamientos dentales con diagnostico claro y cita rapida por WhatsApp."
+      content="Tratamientos dentales con diagnostico claro y reserva online inmediata."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -34,7 +34,7 @@
         <a href="#opiniones">Opiniones</a>
         <a href="#contacto">Contacto</a>
       </nav>
-      <a class="btn btn-solid" href="https://wa.me/34611111111" target="_blank" rel="noreferrer">Pedir cita</a>
+      <button class="btn btn-solid" type="button" data-open-reserva-modal>Reservar cita</button>
     </header>
 
     <main id="inicio">
@@ -44,11 +44,11 @@
           <h1>Una sonrisa sana empieza con un plan claro.</h1>
           <p class="lead">
             Revision completa, explicaciones sin tecnicismos y tratamiento personalizado.
-            Reserva en WhatsApp y te confirmamos hueco hoy mismo.
+            Reserva tu hueco online al instante con nuestro calendario de citas.
           </p>
           <div class="cta-row">
-            <a class="btn btn-solid" href="https://wa.me/34611111111" target="_blank" rel="noreferrer">Reservar por WhatsApp</a>
-            <a class="btn btn-ghost" href="#tratamientos">Ver tratamientos</a>
+            <button class="btn btn-solid" type="button" data-open-reserva-modal>Reservar online</button>
+            <a class="btn btn-ghost" href="https://wa.me/34611111111" target="_blank" rel="noreferrer">Consultar por WhatsApp</a>
           </div>
           <ul class="proof">
             <li>Urgencias dentales el mismo dia</li>
@@ -116,7 +116,7 @@
             <cite>- Ana P.</cite>
           </blockquote>
           <blockquote class="card quote">
-            "Reserve por WhatsApp y me atendieron en el dia. Equipo muy humano."
+            "Reserve online en menos de un minuto y todo fue super facil. Equipo muy humano."
             <cite>- Sergio M.</cite>
           </blockquote>
           <blockquote class="card quote">
@@ -136,22 +136,57 @@
             <li>Telefono: +34 611 111 111</li>
           </ul>
           <div class="cta-row">
-            <a class="btn btn-solid" href="https://wa.me/34611111111" target="_blank" rel="noreferrer">Pedir cita</a>
+            <button class="btn btn-solid" type="button" data-open-reserva-modal>Reservar cita</button>
+            <a class="btn btn-ghost" href="https://wa.me/34611111111" target="_blank" rel="noreferrer">WhatsApp consultas</a>
             <a class="btn btn-ghost" href="https://maps.google.com/?q=Calle+Libertad+24+Alcobendas" target="_blank" rel="noreferrer">Como llegar</a>
           </div>
         </article>
-        <form class="card form-card">
-          <h3>Te llamamos nosotros</h3>
-          <label for="nombre">Nombre</label>
-          <input id="nombre" type="text" required />
-          <label for="telefono">Telefono</label>
-          <input id="telefono" type="tel" required />
-          <label for="motivo">Motivo</label>
-          <textarea id="motivo" rows="3" placeholder="Revision, limpieza, ortodoncia..."></textarea>
-          <button class="btn btn-solid" type="submit">Quiero mi llamada</button>
-        </form>
+        <article class="card form-card">
+          <h3>Reserva digital + soporte humano</h3>
+          <p>Agenda tu cita online cuando quieras. Si tienes dudas de tratamiento, te atendemos por WhatsApp.</p>
+          <div class="cta-row">
+            <button class="btn btn-solid" type="button" data-open-reserva-modal>Abrir agenda</button>
+            <a class="btn btn-ghost" href="https://wa.me/34611111111" target="_blank" rel="noreferrer">Hablar por WhatsApp</a>
+          </div>
+        </article>
       </section>
     </main>
+
+    <div class="modal" id="reserva-modal" aria-hidden="true">
+      <div class="modal-overlay" data-close-reserva-modal></div>
+      <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="reserva-title">
+        <button class="modal-close" type="button" aria-label="Cerrar" data-close-reserva-modal>×</button>
+        <p class="eyebrow">Reserva de cita</p>
+        <h2 id="reserva-title">Elige como quieres reservar</h2>
+        <div class="modal-tabs" role="tablist" aria-label="Metodos de reserva">
+          <button class="modal-tab is-active" type="button" role="tab" data-tab-target="agenda-panel" aria-selected="true">Agenda Google</button>
+          <button class="modal-tab" type="button" role="tab" data-tab-target="form-panel" aria-selected="false">Formulario rapido</button>
+        </div>
+
+        <div class="modal-content is-active" id="agenda-panel" role="tabpanel">
+          <p>Selecciona dia y hora disponibles en Google Calendar.</p>
+          <iframe
+            title="Agenda de citas"
+            src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2demo1234567890?gv=true"
+            loading="lazy"
+          ></iframe>
+          <a class="btn btn-solid" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2demo1234567890" target="_blank" rel="noreferrer">Abrir agenda completa</a>
+        </div>
+
+        <div class="modal-content" id="form-panel" role="tabpanel" hidden>
+          <p>Prefieres que te confirmemos por correo. Completa estos datos y te respondemos pronto.</p>
+          <form class="lead-form" action="#" method="post">
+            <label for="lead-nombre">Nombre</label>
+            <input id="lead-nombre" name="nombre" type="text" required />
+            <label for="lead-email">Email</label>
+            <input id="lead-email" name="email" type="email" required />
+            <label for="lead-motivo">Tratamiento</label>
+            <textarea id="lead-motivo" name="motivo" rows="3" placeholder="Limpieza, ortodoncia, implantes..."></textarea>
+            <button class="btn btn-solid" type="submit">Enviar solicitud</button>
+          </form>
+        </div>
+      </section>
+    </div>
 
     <footer class="container footer">
       <p>Demo landing para clinica dental orientada a captacion local.</p>
